@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Book } from 'src/app/models/book.model';
 import { addBook, removeBook, retrievedBookList } from '../../book-state/book.actions';
 import { selectBookCollection, selectBooks } from '../../book-state/book.selectors';
 import { BookService } from '../../services/book.service';
