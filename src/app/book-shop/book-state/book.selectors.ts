@@ -18,6 +18,6 @@ export const selectCollectionState = createFeatureSelector<AppState, any[]>("col
 export const selectBookCollection = createSelector(selectBooks, selectCollectionState,
   (books: Book[], collection: any[]) => {
     console.log('In collection selector', books, collection);
-    return collection.map((id) => books.find((book) => book.id === id));
+    return collection?.map((id) => books.find((book) => book.id === id));
   }
 )
