@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
-import { addBook, loadBooks, removeBook, retrievedBookList } from '../../book-state/book.actions';
+import { addBook, loadBooks, removeBook } from '../../book-state/book.actions';
 import { selectBookCollection, selectBooks } from '../../book-state/book.selectors';
-import { BookService } from '../../services/book.service';
 
 @Component({
   selector: 'app-book-containers',
@@ -15,23 +14,11 @@ export class BookContainersComponent implements OnInit {
   bookCollection$ = this.store.pipe(map(selectBookCollection));
 
   constructor(
-    private bookService: BookService,
     private store: Store
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(loadBooks());
-    // this.bookService
-    //   .getBooks()
-    //   .subscribe((Books) => {
-    //     console.log('Books', Books);
-
-    //     this.store.dispatch(retrievedBookList(
-    //       {
-    //         books: Books
-    //       }
-    //     ))
-    //   });
+    this.store.dispatch(loadBooks());   
   }
 
   onAdd(bookId: any) {
